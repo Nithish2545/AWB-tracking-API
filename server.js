@@ -4,11 +4,12 @@ import axios from "axios";
 import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
-import {validationResult } from "express-validator";
+import { check, validationResult } from "express-validator";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
 const GOOGLE_SHEET_API_URL = process.env.GOOGLE_SHEET_API_URL;
+const TOKEN = process.env.TOKEN;
 
 app.use(express.json());
 app.use(cors());
@@ -23,15 +24,23 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the AWB Tracking API!");
+  res.send("Welcome to the AWB Tracking API!!!!");
 });
 
 app.post(
   "/awb-tracking-details",
+  [
+    // Validation checks
+    check("TOKEN", "Invalid or missing token")
+      .exists()
+      .isString()
+      .equals(TOKEN),
+    check("AWBID", "AWBID is required").exists().isString(),
+  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ Error: errors.array()[0].msg });
     }
 
     const { AWBID } = req.body;
@@ -48,17 +57,42 @@ app.post(
 
       // Check if the record was found
       if (!result) {
-        return res.status(404).json({ error: "AWB tracking ID not found" });
+        return res.status(404).json({ Error: "AWB tracking ID not found" });
       }
 
       // Send the result as a JSON response
       res.json(result);
     } catch (error) {
-      console.error("Error fetching data from Google Sheets API:", error.message);
-      res.status(500).json({ error: "Failed to fetch data from Google Sheets API" });
+      console.error(
+        "Error fetching data from Google Sheets API:",
+        error.message
+      );
+      res
+        .status(500)
+        .json({ Error: "Failed to fetch data from Google Sheets API" });
     }
   }
 );
+
+app.get("/all-user-data",
+  [
+    // Validation checks
+    check("TOKEN", "Invalid or missing token")
+      .exists()
+      .isString()
+      .equals(TOKEN),
+  ],
+  async (req, res) => {
+  try {
+    const response = await axios.get(GOOGLE_SHEET_API_URL);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching data from Google Sheets API:", error.message);
+    res
+      .status(500)
+      .json({ Error: "Failed to fetch data from Google Sheets API" });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
