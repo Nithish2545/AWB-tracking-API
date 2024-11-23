@@ -10,6 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 9000;
 const GOOGLE_SHEET_API_URL = process.env.GOOGLE_SHEET_API_URL;
 const TOKEN = process.env.TOKEN;
+let endPoints = {
+  UPS: "http://worldfirst.xpresion.in/api/v1/Tracking/Tracking",
+  BOMBINO: "http://admin.bombinoexp.com/api/tracking_api/get_tracking_data",
+};
 
 app.use(express.json());
 app.use(cors());
@@ -74,7 +78,8 @@ app.post(
   }
 );
 
-app.get("/all-user-data",
+app.get(
+  "/all-user-data",
   [
     // Validation checks
     check("TOKEN", "Invalid or missing token")
@@ -83,26 +88,78 @@ app.get("/all-user-data",
       .equals(TOKEN),
   ],
   async (req, res) => {
-  try {
-    const response = await axios.get(GOOGLE_SHEET_API_URL);
-    res.json(response.data);
-  } catch (error) {
-    console.error("Error fetching data from Google Sheets API:", error.message);
-    res
-      .status(500)
-      .json({ Error: "Failed to fetch data from Google Sheets API" });
+    try {
+      const response = await axios.get(GOOGLE_SHEET_API_URL);
+      res.json(response.data);
+    } catch (error) {
+      console.error(
+        "Error fetching data from Google Sheets API:",
+        error.message
+      );
+      res
+        .status(500)
+        .json({ Error: "Failed to fetch data from Google Sheets API" });
+    }
+  }
+);
+
+// {
+//   "Vendor":"UPS",
+//   "UserID": "WF200",
+//   "Password": "PETTI@123",
+//   "AWBNo": "1ZGX05920432746110",
+//  "Type":"C"
+// }
+
+// Proxy endpoint to forward the API request
+app.post("/api/track", async (req, res) => {
+  const {
+    Vendor,
+    UserID,
+    Password,
+    AWBNo,
+    Type,
+    customer_code,
+    tracking_no,
+    api_company_id,
+  } = req.body;
+
+  const requestBody = {
+    UserID: UserID,
+    Password: Password,
+    AWBNo: AWBNo,
+    Type: Type,
+  };
+
+  if (Vendor == "UPS") {
+    try {
+      const response = await axios.post(endPoints[Vendor], requestBody);
+      res.json(response.data);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Error with the API request", error: error.message });
+    }
+    return;
   }
 });
 
-
-// Proxy endpoint to forward the API request
-app.post('/api/track', async (req, res) => {
+app.post("/api/track/bombino", async (req, res) => {
+  const params = {
+    api_company_id: req.body.api_company_id,
+    customer_code: req.body.customer_code,
+    tracking_no: req.body.tracking_no,
+  };
+  const bombino_endPoint = `https://admin.bombinoexp.com/api/tracking_api/get_tracking_data?api_company_id=${params.api_company_id}&customer_code=${params.customer_code}&tracking_no=${params.tracking_no}`;
   try {
-    const response = await axios.post('http://worldfirst.xpresion.in/api/v1/Tracking/Tracking', req.body);
+    const response = await axios.get(bombino_endPoint);
     res.json(response.data);
   } catch (error) {
-    res.status(500).json({ message: 'Error with the API request', error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error with the API request", error: error.message });
   }
+  return;
 });
 
 app.listen(PORT, () => {
