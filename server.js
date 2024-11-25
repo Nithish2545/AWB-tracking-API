@@ -153,7 +153,7 @@ app.post("/api/track/bombino", async (req, res) => {
   const bombino_endPoint = `https://admin.bombinoexp.com/api/tracking_api/get_tracking_data?api_company_id=${params.api_company_id}&customer_code=${params.customer_code}&tracking_no=${params.tracking_no}`;
   try {
     const response = await axios.get(bombino_endPoint);
-    res.json(response.data);
+    res.json(response.data[0].docket_events);
   } catch (error) {
     res
       .status(500)
