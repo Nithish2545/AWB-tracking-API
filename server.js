@@ -145,6 +145,41 @@ app.post("/api/track", async (req, res) => {
 });
 
 app.post("/api/track/bombino", async (req, res) => {
+  if (req.body.tracking_no == "bb8567581") {
+    res.json([
+      {
+        event_at: "2025-02-20 20:30:22",
+        event_description: "Departure from facility",
+        event_location: "Chennai",
+      },
+      {
+        event_at: "2025-02-21 11:15:12",
+        event_description: "Arrived at facility",
+        event_location: "Bangalore Airport",
+      },
+      {
+        event_at: "2025-02-21 2:01:19",
+        event_description: "import scan",
+        event_location: "Bangalore Airport",
+      },
+      {
+        event_at: "2025-02-21 2:01:19",
+        event_description: "Departure from facility",
+        event_location: "Bangalore Airport",
+      },
+      {
+        event_at: "2025-02-23 10:15:12",
+        event_description: "Arrived at facility",
+        event_location: "Koeln",
+      },
+      {
+        event_at: "2025-02-23 1:24:09",
+        event_description: "Departure from facility",
+        event_location: "Koeln",
+      },
+    ]);
+  }
+
   if (req.body.tracking_no == 22348) {
     res.json([
       {
