@@ -15,6 +15,14 @@ let endPoints = {
   BOMBINO: "http://admin.bombinoexp.com/api/tracking_api/get_tracking_data",
 };
 
+app.use(
+  cors({
+    origin: "*", // Allows all origins, can be replaced with a specific domain
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+  })
+);
+
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
@@ -110,7 +118,6 @@ app.get(
 //   "AWBNo": "1ZGX05920432746110",
 //  "Type":"C"
 // }
-
 // Proxy endpoint to forward the API request
 app.post("/api/track", async (req, res) => {
   const {
@@ -152,31 +159,26 @@ app.post("/api/track/bombino", async (req, res) => {
         event_description: "Departure from facility",
         event_location: "Koeln",
       },
-
       {
         event_at: "2025-02-23 10:15:12",
         event_description: "Arrived at facility",
         event_location: "Koeln",
       },
-
       {
         event_at: "2025-02-21 2:01:19",
         event_description: "Departure from facility",
         event_location: "Bangalore Airport",
       },
-
       {
         event_at: "2025-02-21 2:01:19",
         event_description: "import scan",
         event_location: "Bangalore Airport",
       },
-
       {
         event_at: "2025-02-21 11:15:12",
         event_description: "Arrived at facility",
         event_location: "Bangalore Airport",
       },
-
       {
         event_at: "2025-02-20 20:30:22",
         event_description: "Departure from facility",
