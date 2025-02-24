@@ -36,7 +36,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the AWB Tracking API!!!!");
+  res.send("Welcome to the AWB Tracking API -  24-02-2025");
 });
 
 app.post(
