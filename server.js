@@ -4,6 +4,7 @@ import axios from "axios";
 import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import dummydata from "./dummydata.js";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -39,6 +40,10 @@ app.get("/", (req, res) => {
 
 app.post("/api/track/ups", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
+
+  if (AWBNo == "9220883890") {
+    return res.json(dummydata);
+  }
 
   const requestBody = {
     UserID: UserID,
