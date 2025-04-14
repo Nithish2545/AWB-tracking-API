@@ -40,8 +40,7 @@ export default {
         EventDate1: "12th April 2025",
         EventTime1: "10:22 AM",
         Location: "",
-        Status:
-          "We are experiencing transit delays. We will deliver your package as soon as possible. / Your package",
+        Status: "We are experiencing transit delays.",
         FlightCode: "",
         FlightName: "",
       },
@@ -51,8 +50,7 @@ export default {
         EventDate1: "11th April 2025",
         EventTime1: "4:10 PM",
         Location: "Bengaluru Airport",
-        Status:
-          "We are experiencing transit delays. We will deliver your package as soon as possible.",
+        Status: "We are experiencing transit delays.",
         FlightCode: "",
         FlightName: "",
       },
@@ -62,8 +60,7 @@ export default {
         EventDate1: "11th April 2025",
         EventTime1: "8:24 AM",
         Location: "",
-        Status:
-          "We are experiencing transit delays. We will deliver your package as soon as possible. / Your package",
+        Status: "We are experiencing transit delays.",
         FlightCode: "",
         FlightName: "",
       },
@@ -73,8 +70,7 @@ export default {
         EventDate1: "10th April 2025",
         EventTime1: "4:27 PM",
         Location: "Bengaluru Airport",
-        Status:
-          "We are experiencing transit delays. We will deliver your package as soon as possible.",
+        Status: "We are experiencing transit delays.",
         FlightCode: "",
         FlightName: "",
       },
