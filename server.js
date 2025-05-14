@@ -64,7 +64,7 @@ app.post("/api/track/ups", async (req, res) => {
 
 app.post("/api/track/atlantic", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
-
+  console.log("Test")
   const requestBody = {
     UserID: UserID,
     Password: Password,
