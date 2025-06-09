@@ -5,6 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import dummydata from "./dummydata.js";
+import selfdummy from "./selfdummy.js";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -38,12 +39,16 @@ app.get("/", (req, res) => {
   res.send("Welcome to the AWB Tracking API -  14-04-2025");
 });
 
-app.post("/api/track/ups", async (req, res) => {
+app.post("/api/track/deskself", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
 
-  if (AWBNo == "9220883890") {
-    return res.json(dummydata);
+  if (AWBNo == "sefl12323123") {
+    return res.json(selfdummy);
   }
+});
+
+app.post("/api/track/ups", async (req, res) => {
+  const { UserID, Password, AWBNo, Type } = req.body;
 
   const requestBody = {
     UserID: UserID,
