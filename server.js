@@ -14,6 +14,7 @@ let endPoints = {
   UPS: "http://worldfirst.xpresion.in/api/v1/Tracking/Tracking",
   BOMBINO: "http://admin.bombinoexp.com/api/tracking_api/get_tracking_data",
   ATLANTIC: "https://live.tccs.in/api/v1/Tracking/Tracking",
+  EXPLUS: "https://api.expluslogistics.com/index.php",
 };
 
 app.use(
@@ -45,6 +46,29 @@ app.post("/api/track/deskself", async (req, res) => {
 
   if (AWBNo == "sefl12323123") {
     return res.json(selfdummy);
+  }
+});
+
+app.post("/api/track/ExPlus", async (req, res) => {
+  try {
+    const apiResponse = await axios.post(
+      `${endPoints["EXPLUS"]}?action=GetExplusTracking`,
+      req.body,
+      {
+        headers: {
+          Authorization:
+            "Bearer 5ae5ecea2a57fdb227d9168eade332344bb38d17205d750c6260f34bad62a65a", // Forward the bearer token
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    res.json(apiResponse.data);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error with the API request",
+      error: error?.response?.data || error.message,
+    });
   }
 });
 
