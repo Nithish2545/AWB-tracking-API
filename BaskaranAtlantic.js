@@ -29,7 +29,7 @@ export default {
         EventTime: "0830",
         EventDate1: "30th June 2025",
         EventTime1: "8:30 AM",
-        Location: "Amsterdam Schiphol Airport, Netherlands",
+        Location: "Amsterdam Schiphol Airport",
         Status: "Shipment Undergoing Customs Clearance",
         FlightCode: "",
         FlightName: "",
