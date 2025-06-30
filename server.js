@@ -8,6 +8,7 @@ import dummydata from "./dummydata.js";
 import selfdummy from "./selfdummy.js";
 import atlanticDummy from "./atlanticDummy.js";
 import muthukumarAtlantic from "./muthukumarAtlantic.js";
+import BaskaranAtlantic from "./BaskaranAtlantic.js";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -95,6 +96,9 @@ app.post("/api/track/ups", async (req, res) => {
 
 app.post("/api/track/atlantic", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
+  if (AWBNo == "9220933182") {
+    return res.json(BaskaranAtlantic);
+  }
   if (AWBNo == "9220930810") {
     return res.json(muthukumarAtlantic);
   }
