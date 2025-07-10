@@ -96,14 +96,11 @@ app.post("/api/track/ups", async (req, res) => {
 
 app.post("/api/track/atlantic", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
-  if (AWBNo == "9220933182") {
-    return res.json(BaskaranAtlantic);
-  }
   if (AWBNo == "9220930810") {
     return res.json(muthukumarAtlantic);
   }
-  if (AWBNo == "9220924759") {
-    return res.json(atlanticDummy);
+  if (AWBNo == "9220933182") {
+    return res.json(BaskaranAtlantic);
   }
   const requestBody = {
     UserID: UserID,
