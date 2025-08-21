@@ -19,7 +19,7 @@ export default {
         EventDate: "21/08/2025",
         EventTime: "1500",
         EventDate1: "21th August 2025",
-        EventTime1: "10:00 PM",
+        EventTime1: "11:00 AM",
         Location: "Bangalore",
         Status: "Custom Clearance Completed",
         FlightCode: "",
