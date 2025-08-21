@@ -49,10 +49,6 @@ app.post("/api/track/deskself", async (req, res) => {
   if (AWBNo == "sefl12323123") {
     return res.json(selfdummy);
   }
-
-  if (AWBNo == "987654321") {
-    return res.json(Vijayalakshmi_dataset);
-  }
 });
 
 app.post("/api/track/ExPlus", async (req, res) => {
@@ -109,6 +105,11 @@ app.post("/api/track/atlantic", async (req, res) => {
   if (AWBNo == "9220951416") {
     return res.json(hemanth_bobi);
   }
+
+  if (AWBNo == "987654321") {
+    return res.json(Vijayalakshmi_dataset);
+  }
+
   const requestBody = {
     UserID: UserID,
     Password: Password,
