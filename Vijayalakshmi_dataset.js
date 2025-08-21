@@ -26,7 +26,7 @@ export default {
         FlightName: "",
       },
       {
-        EventDate: "20/08/2025",
+        EventDate: "21/08/2025",
         EventTime: "1065",
         EventDate1: "21th August 2025",
         EventTime1: "09:45 AM",
@@ -37,7 +37,7 @@ export default {
       },
 
       {
-        EventDate: "19/08/2025",
+        EventDate: "20/08/2025",
         EventTime: "0831",
         EventDate1: "20th August 2025",
         EventTime1: "9:30 PM",
@@ -47,7 +47,7 @@ export default {
         FlightName: "",
       },
       {
-        EventDate: "19/08/2025",
+        EventDate: "20/08/2025",
         EventTime: "0831",
         EventDate1: "20th August 2025",
         EventTime1: "6:30 PM",
