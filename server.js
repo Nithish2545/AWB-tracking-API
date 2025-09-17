@@ -10,6 +10,7 @@ import hemanth_bobi from "./hemanth_bobi.js";
 import BaskaranAtlantic from "./BaskaranAtlantic.js";
 import Vijayalakshmi_dataset from "./Vijayalakshmi_dataset.js";
 import SKarunanithy from "./SKarunanithy.js";
+import PARAMPARA from "./PARAMPARA.js";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -98,6 +99,9 @@ app.post("/api/track/atlantic", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
   if (AWBNo == "9220930810") {
     return res.json(muthukumarAtlantic);
+  }
+  if (AWBNo == "131231241231") {
+    return res.json(PARAMPARA);
   }
   if (AWBNo == "9220933182") {
     return res.json(BaskaranAtlantic);
