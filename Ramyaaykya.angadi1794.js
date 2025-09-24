@@ -20,7 +20,7 @@ export default {
         EventTime: "1065",
         EventDate1: "24th Sept 2025",
         EventTime1: "8:45 PM",
-        Location: "Bangalore",
+        Location: "Chennai",
         Status: "Custom Clearance Initiated",
         FlightCode: "",
         FlightName: "",
