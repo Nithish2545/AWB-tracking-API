@@ -11,6 +11,7 @@ import BaskaranAtlantic from "./BaskaranAtlantic.js";
 import Vijayalakshmi_dataset from "./Vijayalakshmi_dataset.js";
 import SKarunanithy from "./SKarunanithy.js";
 import PARAMPARA from "./PARAMPARA.js";
+import Vellaisamy from "./Vellaisamy.js";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -97,6 +98,11 @@ app.post("/api/track/ups", async (req, res) => {
 
 app.post("/api/track/atlantic", async (req, res) => {
   const { UserID, Password, AWBNo, Type } = req.body;
+
+  if (AWBNo == "1ZXGHSDFXCSZ") {
+    return res.json(Vellaisamy);
+  }
+
   if (AWBNo == "9220930810") {
     return res.json(muthukumarAtlantic);
   }
