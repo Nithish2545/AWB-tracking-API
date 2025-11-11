@@ -1,0 +1,53 @@
+export default {
+  Response: {
+    ResponseCode: "RT01",
+    ErrorCode: "0",
+    ErrorDisc: "Success",
+    Tracking: [
+      {
+        AWBNo: "CH1014956",
+        BookingDate: "24/09/2025",
+        BookTime: "1846",
+        BookingDate1: "24th Sept 2025",
+        Origin: "CHENNAI",
+        Destination: "Singapore",
+      },
+      2,
+    ],
+    Events: [
+      {
+        EventDate: "24/09/2025",
+        EventTime: "1065",
+        EventDate1: "24th Sept 2025",
+        EventTime1: "8:45 PM",
+        Location: "Chennai",
+        Status: "Custom Clearance Initiated",
+        FlightCode: "",
+        FlightName: "",
+      },
+      {
+        EventDate: "24/09/2025",
+        EventTime: "0831",
+        EventDate1: "24th Sept 2025",
+        EventTime1: "6:30 PM",
+        Location: "Chennai",
+        Status: "Departure From Chennai",
+        FlightCode: "",
+        FlightName: "",
+      },
+      {
+        EventDate: "24/09/2025",
+        EventTime: "0831",
+        EventDate1: "24th Sept 2025",
+        EventTime1: "5:55 PM",
+        Location: "Chennai",
+        Status: "Shipment Received at Origin Facility",
+        FlightCode: "",
+        FlightName: "",
+      },
+    ],
+    AdditionalData: [],
+    Dimensions: [],
+    Performa: [],
+  },
+};

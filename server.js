@@ -12,6 +12,8 @@ import Vijayalakshmi_dataset from "./Vijayalakshmi_dataset.js";
 import SKarunanithy from "./SKarunanithy.js";
 import PARAMPARA from "./PARAMPARA.js";
 import Vellaisamy from "./Vellaisamy.js";
+import aykya from "./aykya.js";
+import RamyaaykyaAngadi1794 from "./Ramyaaykya.angadi1794.js";
 
 const app = express();
 const PORT = process.env.PORT || 9000;
@@ -120,9 +122,16 @@ app.post("/api/track/atlantic", async (req, res) => {
   if (AWBNo == "987654321") {
     return res.json(Vijayalakshmi_dataset);
   }
+  if (AWBNo == "9220930002") {
+    return res.json(aykya);
+  }
 
   if (AWBNo == "71147292554") {
     return res.json(SKarunanithy);
+  }
+
+  if (AWBNo == "122726271716") {
+    return res.json(RamyaaykyaAngadi1794);
   }
 
   const requestBody = {
