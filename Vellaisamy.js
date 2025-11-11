@@ -20,7 +20,7 @@ export default {
         EventDate1: "10th November 2025",
         EventTime1: "09:30 AM",
         Location: "USA",
-        Status: "Customs Clearance Completed (USA)",
+        Status: "Under Customs Clearance (USA)",
         FlightCode: "",
         FlightName: "",
       },
