@@ -18,7 +18,7 @@ export default {
         EventDate: "17/11/2025",
         EventTime: "2100",
         EventDate1: "17th November 2025",
-        EventTime1: "09:00 PM",
+        EventTime1: "04:00 PM",
         Location: "Mumbai",
         Status: "Under Customs Clearance (Mumbai)",
         FlightCode: "",
