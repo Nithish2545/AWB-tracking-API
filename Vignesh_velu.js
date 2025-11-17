@@ -1,0 +1,52 @@
+export default {
+  Response: {
+    ResponseCode: "RT01",
+    ErrorCode: "0",
+    ErrorDisc: "Success",
+    Tracking: [
+      {
+        AWBNo: "CH1014956",
+        BookingDate: "31/10/2025",
+        BookTime: "1846",
+        BookingDate1: "11th Nov 2025",
+        Origin: "CHENNAI",
+        Destination: "CANADA",
+      },
+    ],
+    Events: [
+      {
+        EventDate: "17/11/2025",
+        EventTime: "2100",
+        EventDate1: "17th November 2025",
+        EventTime1: "09:00 PM",
+        Location: "Mumbai",
+        Status: "Under Customs Clearance (Mumbai)",
+        FlightCode: "",
+        FlightName: "",
+      },
+      {
+        EventDate: "15/11/2025",
+        EventTime: "1400",
+        EventDate1: "15th November 2025",
+        EventTime1: "02:00 PM",
+        Location: "Mumbai",
+        Status: "Received To Mumbai HUB",
+        FlightCode: "",
+        FlightName: "",
+      },
+      {
+        EventDate: "11/11/2025",
+        EventTime: "1000",
+        EventDate1: "11th November 2025",
+        EventTime1: "10:00 AM",
+        Location: "Chennai",
+        Status: "Departed from Chennai - On the way to Destination",
+        FlightCode: "",
+        FlightName: "",
+      },
+    ],
+    AdditionalData: [],
+    Dimensions: [],
+    Performa: [],
+  },
+};
